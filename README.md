@@ -3,7 +3,7 @@
 A pocket radio scanner for the **ESP32 "Cheap Yellow Display"**, in 2.8" and 3.5" versions. It shows nearby Bluetooth devices, Wi-Fi networks, crowded Wi-Fi channels, Bluetooth trackers, and MeshCore radios on a touch screen.
 
 <p align="center">
-  <img src="docs/splash.png" width="240" alt="Geek Scanner boot screen">
+  <img src="splash.png" width="240" alt="Geek Scanner boot screen">
 </p>
 
 **Version:** 2.6.0 · **Author:** Geekaboo
