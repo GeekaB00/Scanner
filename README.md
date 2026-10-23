@@ -90,7 +90,7 @@ You also need a good USB cable and port, because Wi-Fi and Bluetooth together dr
 You need **Chrome or Edge on a desktop computer**. Safari and Firefox don't support Web Serial.
 
 1. Connect the CYD with a USB **data** cable.
-2. Open the project's installer page (https://geekab00.github.io/Scanner/_blank), or go to **[web.esphome.io](https://web.esphome.io)**.
+2. Open the project's installer page (https://geekab00.github.io/Scanner/), or go to **[web.esphome.io](https://web.esphome.io)**.
 3. Click **Connect** (or **FLASH FIRMWARE**) and pick the serial port. It's usually called *CH340* or *CP210x*.
 4. On the installer page, pick your board first. On web.esphome.io, choose **Install** and select the file for your board from `firmware/` (see [Hardware](#hardware)).
 5. When it's done, press **RST** on the board.
