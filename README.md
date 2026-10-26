@@ -136,7 +136,7 @@ If a red line appears at the top of the boot screen, or a red **CRASH REPORT** b
 ### Boo, the radio pet
 
 <p align="center">
-  <img src="docs/boo-moods.png" width="720" alt="Boo's ten moods">
+  <img src="boo-moods.png" width="720" alt="Boo's ten moods">
 </p>
 
 Boo is a little ghost with an antenna. It lives on the radio signals the scanner picks up: its mood, its hunger and its level all come from what is on the air around you. While Boo is on screen the scanner keeps running (mostly Bluetooth, with a Wi-Fi scan every 4th round), and the antenna blinks and sends out radio waves.
