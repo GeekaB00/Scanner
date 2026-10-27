@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Geekaboo">
+  <title>Geekaboo Multi Scanner — Web Installer</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <style>
+    :root { --bg:#05060a; --panel:#0c0f18; --cyan:#00f0ff; --mag:#ff2bd6; --text:#c9d2e3; --dim:#5b6478; }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:var(--bg); color:var(--text);
+      font-family:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+      background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+      padding:16px;
+    }
+    .card {
+      width:100%; max-width:520px; background:var(--panel); padding:32px 28px;
+      border:1px solid #1b2133; position:relative;
+      box-shadow:0 0 40px rgba(0,240,255,.08), 0 0 80px rgba(255,43,214,.05);
+    }
+    .card::before, .card::after { content:""; position:absolute; width:18px; height:18px; }
+    .card::before { top:-1px; left:-1px; border-top:2px solid var(--cyan); border-left:2px solid var(--cyan); }
+    .card::after  { bottom:-1px; right:-1px; border-bottom:2px solid var(--mag); border-right:2px solid var(--mag); }
+    h1 {
+      margin:0; font-family:system-ui, sans-serif; font-weight:800; font-size:clamp(40px, 11vw, 60px);
+      letter-spacing:.02em; color:#fff; text-align:center;
+      text-shadow:-3px 2px 0 var(--mag), 3px -2px 0 var(--cyan);
+    }
+    .sub { text-align:center; color:var(--cyan); margin:10px 0 4px; letter-spacing:.12em; }
+    .meta { text-align:center; color:var(--dim); font-size:12px; margin-bottom:28px; }
+    .install { display:flex; justify-content:center; margin:8px 0 28px; }
+    esp-web-install-button button {
+      font:inherit; font-size:15px; letter-spacing:.1em; cursor:pointer;
+      background:transparent; color:var(--cyan); border:1px solid var(--cyan);
+      padding:12px 28px; transition:.15s;
+    }
+    esp-web-install-button button:hover { background:var(--cyan); color:var(--bg); box-shadow:0 0 20px var(--cyan); }
+    ol { padding-left:20px; margin:0; font-size:13px; line-height:1.7; }
+    li::marker { color:var(--mag); }
+    .warn { color:var(--mag); font-size:13px; text-align:center; }
+    footer { text-align:center; color:var(--dim); font-size:11px; margin-top:24px; }
+    .pick { border:1px solid #1b2133; margin:0 0 20px; padding:12px 14px; }
+    .pick legend { color:var(--mag); font-size:12px; letter-spacing:.08em; padding:0 6px; }
+    .pick label { display:block; font-size:13px; padding:6px 0; cursor:pointer; }
+    .pick b { color:var(--cyan); }
+    .pick span { color:var(--dim); font-size:11px; }
+    .pick input { accent-color:var(--cyan); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Geekaboo</h1>
+    <div class="sub">// MULTI SCANNER</div>
+    <div class="meta">v3.3.0 · Cheap Yellow Display 2.8" and 3.5"</div>
+
+    <fieldset class="pick">
+      <legend>1. Choose your board</legend>
+      <label><input type="radio" name="b" value="cyd28" checked> <b>ESP32-2432S028</b> <span>2.8" · 240×320</span></label>
+      <label><input type="radio" name="b" value="cyd35r"> <b>ESP32-3248S035R</b> <span>3.5" · resistive touch</span></label>
+      <label><input type="radio" name="b" value="cyd35c"> <b>ESP32-3248S035C</b> <span>3.5" · capacitive touch (glass)</span></label>
+    </fieldset>
+
+    <div class="install">
+      <esp-web-install-button id="inst" manifest="manifest-cyd28.json">
+        <button slot="activate">FLASH FIRMWARE</button>
+        <span slot="unsupported" class="warn">Use Chrome or Edge on desktop — this browser has no Web Serial.</span>
+        <span slot="not-allowed" class="warn">This page must be opened over HTTPS.</span>
+      </esp-web-install-button>
+    </div>
+
+    <ol>
+      <li>Choose your board above, then connect it with a USB data cable.</li>
+      <li>Click <b>FLASH FIRMWARE</b> and pick the serial port (CH340 / CP210x).</li>
+      <li>If it won't connect: hold <b>BOOT</b>, tap <b>RST</b>, release <b>BOOT</b>, and try again.</li>
+      <li>After flashing, press <b>RST</b> — the Geek Scanner boot image appears — tap the screen to start scanning.</li>
+      <li>3.5" boards: on the first start, tap the crosses to calibrate touch.</li>
+    </ol>
+
+    <footer>© Geekaboo</footer>
+  </main>
+  <script>
+    document.querySelectorAll('input[name=b]').forEach(r =>
+      r.addEventListener('change', () => document.getElementById('inst').manifest = 'manifest-' + r.value + '.json'));
+  </script>
+</body>
+</html>
