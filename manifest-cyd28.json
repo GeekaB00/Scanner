@@ -1,0 +1,16 @@
+{
+  "name": "Geekaboo Multi Scanner (ESP32-2432S028 2.8\")",
+  "version": "3.4.1",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "firmware/geekaboo-scanner-v3.4.1-cyd28.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
